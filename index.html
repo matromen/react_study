@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type='text/babel'>
+        // const e = React.createElement;
+        class LikeButton extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    liked: false
+                }
+            }
+
+            render(){
+                return <button type='submit' onClick={()=>{console.log('clicked'); this.setState({liked: true});}}>
+                            {!this.state.liked ? 'Liked' : 'Like'}
+                       </button>;  //JSX
+
+                // return e(
+                //         'button', 
+                //         {onClick: ()=>{console.log('clicked'); this.setState({liked: true});}, type: 'submit'},
+                //         this.state.liked ===  true ? 'Liked': 'UnLiked'
+                //         ); 
+                //<button onclick="()=>{console.log('clicked');}" type="submit">Like</button>
+                //2번째인자는 tag 속성자리
+            }
+        }
+    </script>
+
+    <script type='text/babel'>
+        ReactDOM.render(<div><LikeButton /><LikeButton /><LikeButton /><LikeButton /></div>, document.querySelector('#root'));
+        // ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+    </script>
+</body>
+</html>
